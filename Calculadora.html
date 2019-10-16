@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Calculadora</title>
+    <link rel="stylesheet" href="css/calculadora.css">
+    <!-- Adicione aqui seus scripts para testar -->
+    <script defer src="script.js"></script>
+</head>
+<body>
+    <div class="calculadora">
+        <input type="text" id="resultado" />
+
+        <button onclick="calc('9')" class="numero">9</button>
+        <button onclick="calc('8')" class="numero">8</button>
+        <button onclick="calc('7')" class="numero">7</button>
+        <button onclick="calc('+')" class="operacao somar">+</button>
+        
+        <button onclick="calc('6')" class="numero">6</button>
+        <button onclick="calc('5')" class="numero">5</button>
+        <button onclick="calc('4')" class="numero">4</button>
+        <button onclick="calc('-')" class="operacao subtrair">-</button>
+        
+        <button onclick="calc('3')" class="numero">3</button>
+        <button onclick="calc('2')" class="numero">2</button>
+        <button onclick="calc('1')" class="numero">1</button>
+        <button onclick="calc('*')" class="operacao multiplicar">*</button>
+        
+        <button onclick="calc('0')" class="numero">0</button>
+        <button onclick="calc('.')" class="numero">.</button>
+        <button onclick="calc('resultado')" class="resultar">=</button>
+        <button onclick="calc('/')" class="operacao dividir">/</button>
+    </div>
+</body>
+</html>

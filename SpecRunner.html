@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v3.2.1</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.2.1/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-3.2.1/jasmine.css">
+
+  <script src="lib/jasmine-3.2.1/jasmine.js"></script>
+  <script src="lib/jasmine-3.2.1/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.2.1/boot.js"></script>
+  <script src="lib/jquery.slim.js"></script>
+
+  <!-- Adicione aqui seus scripts para testar -->
+  <script defer>
+    function calc(valor){
+        var obj = document.getElementById("resultado").value;
+        var result = 0;
+        let operador = ["+", "-","/", "*"];
+        var verdadeiro = true;
+        var ponto = true;
+        var guardaPonto = 0;
+        var localiza = 0;
+        var opComp = "";
+        var opCompResult = true;
+        var erro = false;
+            if(Number.parseInt(valor) || valor == "0"){
+                obj = document.getElementById("resultado").value += valor;
+            }
+            for(var i = 0;i < obj.length;i++){
+                
+                for(var op = 0;op < operador.length;op++){
+                if(obj[i] == operador[op]){
+                    verdadeiro = false;
+                    guardaPonto = i;
+                    localiza = guardaPonto+1;
+                    opComp = obj[i];
+                    }
+                }
+            }
+            for(var p = guardaPonto;p<obj.length;p++){
+                if(obj[p] == "."){
+                    ponto = !ponto;
+                }
+            }
+            if(verdadeiro){
+
+                if(Number.parseInt(obj[0]) && ponto && valor == "." ||
+                 obj[0] == "0" && ponto && valor == "."){
+                    document.getElementById("resultado").value+=valor;
+                }
+            }else{
+                guardaPonto += 1;
+                if(Number.parseInt(obj[guardaPonto]) && ponto && valor == "."
+                 || obj[guardaPonto] == "0" && valor == "." && ponto){
+                    document.getElementById("resultado").value +=valor;
+            }
+            }
+            if(Number.parseInt(obj[0]) && verdadeiro && valor == "+" || 
+            obj[0] == "0" && verdadeiro && valor == "+" || Number.parseInt(obj[0]) 
+            && verdadeiro && valor == "-" || obj[0] == "0" && verdadeiro && valor == "-" || Number.parseInt(obj[0]) 
+            && verdadeiro && valor == "*" || obj[0] == "0" && verdadeiro && valor == "*" || Number.parseInt(obj[0])
+            && verdadeiro && valor == "/" || obj[0] == "0" && verdadeiro && valor == "/"){
+
+                obj = document.getElementById("resultado").value += valor;
+
+            }
+                if(!verdadeiro && opComp != "" && valor == "resultado"){
+                    document.getElementById("resultado").value = "erro de operação";
+                }
+                if(erro){
+                     document.getElementById("resultado").value = "erro de operação";
+                    verdadeiro = true;
+                }
+                if(valor == "resultado" && Number.parseInt(obj[0]) ||
+                 valor == "resultado" && obj[0] == "0"){
+                    result = eval(obj);
+                    obj = document.getElementById("resultado").value = result;
+                    verdadeiro = true;
+                }
+
+            }
+</script>
+  <!-- Adicione acima os scripts -->
+
+  <script src="spec/OperacaoSpec.js"></script>
+
+</head>
+
+<body>
+    <div class="calculadora" style="display: none;">
+        <input type="text" id="resultado" />
+        <button onclick="calc('9')" class="numero">9</button>
+        <button onclick="calc('8')" class="numero">8</button>
+        <button onclick="calc('7')" class="numero">7</button>
+        <button onclick="calc('+')" class="operacao somar">+</button>
+        
+        <button onclick="calc('6')" class="numero">6</button>
+        <button onclick="calc('5')" class="numero">5</button>
+        <button onclick="calc('4')" class="numero">4</button>
+        <button onclick="calc('-')" class="operacao subtrair">-</button>
+        
+        <button onclick="calc('3')" class="numero">3</button>
+        <button onclick="calc('2')" class="numero">2</button>
+        <button onclick="calc('1')" class="numero">1</button>
+        <button onclick="calc('*')" class="operacao multiplicar">*</button>
+        
+        <button onclick="calc('0')" class="numero">0</button>
+        <button onclick="calc('.')" class="numero">.</button>
+        <button onclick="calc('resultado')" class="resultar">=</button>
+        <button onclick="calc('/')" class="operacao dividir">/</button>
+        
+    </div>
+
+</body>
+</html>
